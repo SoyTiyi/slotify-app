@@ -1,5 +1,5 @@
 import { SignUp } from "@clerk/nextjs";
-import AuthForm from "@/src/components/AuthForm/AuthForm";
+import AuthForm from "@/components/AuthForm/AuthForm";
 
 const SignUpPage = () => {
   return (

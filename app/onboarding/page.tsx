@@ -13,16 +13,15 @@ export default function OnboardingComponent() {
   const handleSubmit = async (formData: FormData) => {
     const res = await completeOnboarding(formData)
     if (res?.message) {
-      // Forces a token refresh and refreshes the `User` object
       await user?.reload()
-      router.push('/')
+      router.push('/dashboard')
     }
     if (res?.error) {
       setError(res?.error)
     }
   }
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center text-white">
       <h1>Welcome</h1>
       <form action={handleSubmit}>
         <div>
