@@ -4,11 +4,29 @@ import * as React from 'react'
 import { useUser } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
 import { completeOnboarding } from './_actions'
+import { z } from 'zod'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from "@hookform/resolvers/zod"
+
+const formSchema = z.object({
+  companyName: z.string().min(2).max(100),
+  category: z.string().min(2).max(100),
+  direction: z.string().min(2).max(100),
+})
 
 export default function OnboardingComponent() {
   const [error, setError] = React.useState('')
   const { user } = useUser()
   const router = useRouter()
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      companyName: "",
+      category: "",
+      direction: "",
+    },
+  })
 
   const handleSubmit = async (formData: FormData) => {
     const res = await completeOnboarding(formData)
