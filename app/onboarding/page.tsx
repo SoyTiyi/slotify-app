@@ -21,9 +21,10 @@ export default function OnboardingComponent() {
     }
   }
   return (
-    <div className="flex flex-col justify-center items-center text-white">
-      <h1>Welcome</h1>
-      <form action={handleSubmit}>
+    <div className="flex flex-col justify-center items-center text-white p-8">
+      <h1 className="text-5xl font-semibold mb-8">Bienvenido a <b className="text-6xl font-bold text-primary">Slotify</b></h1>
+      <p className="text-2xl text-muted font-medium mb-6 text-lg">Para comenzar, por favor completa la siguiente información sobre tu aplicación.</p>
+      <form className="bg-surface border border-muted p-6 rounded-lg shadow-md w-full max-w-md" action={handleSubmit}>
         <div>
           <label>Application Name</label>
           <p>Enter the name of your application.</p>
