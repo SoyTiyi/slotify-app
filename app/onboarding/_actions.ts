@@ -1,8 +1,10 @@
 'use server'
 
 import { auth, clerkClient } from '@clerk/nextjs/server'
+import { z } from 'zod'
+import { formSchema } from './page'
 
-export const completeOnboarding = async (formData: FormData) => {
+export const completeOnboarding = async (formData: z.infer<typeof formSchema>) => {
   const { isAuthenticated, userId } = await auth()
 
   if (!isAuthenticated) {
@@ -15,8 +17,9 @@ export const completeOnboarding = async (formData: FormData) => {
     const res = await client.users.updateUser(userId, {
       publicMetadata: {
         onboardingComplete: true,
-        applicationName: formData.get('applicationName'),
-        applicationType: formData.get('applicationType'),
+        companyName: formData.companyName,
+        category: formData.category,
+        direction: formData.direction,
       },
     })
     return { message: res.publicMetadata }
