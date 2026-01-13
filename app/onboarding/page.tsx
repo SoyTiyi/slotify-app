@@ -65,7 +65,7 @@ export default function OnboardingComponent() {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Nombre de la Compañía</FormLabel>
+                  <FormLabel className="text-xl font-semibold">Nombre de la Compañía</FormLabel>
                   <FormControl>
                     <Input placeholder="Ej. Mi Compañía" {...field} className="text-white"/>
                   </FormControl>
@@ -77,7 +77,7 @@ export default function OnboardingComponent() {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Categoría</FormLabel>
+                  <FormLabel className="text-xl font-semibold">Categoría</FormLabel>
                   <FormControl>
                     <Input placeholder="Ej. Tecnología" {...field} className="text-white"/>
                   </FormControl>
@@ -89,14 +89,14 @@ export default function OnboardingComponent() {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Dirección</FormLabel>
+                  <FormLabel className="text-xl font-semibold">Dirección</FormLabel>
                   <FormControl>
                     <Input placeholder="Ej. Desarrollo Web" {...field} className="text-white"/>
                   </FormControl>
                 </FormItem>
               )}
             />
-            <Button type="submit">Submit</Button>
+            <Button type="submit" className="w-full text-lg p-6">Submit</Button>
           </form>
         </FormProvider>
       </div>
