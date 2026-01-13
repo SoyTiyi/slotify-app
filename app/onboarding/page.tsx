@@ -1,12 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useUser } from "@clerk/nextjs";
-import { useRouter } from "next/navigation";
-import { completeOnboarding } from "./_actions";
-import { z } from "zod";
 import { FormProvider, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
   FormControl,
   FormField,
@@ -15,38 +10,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-
-export const formSchema = z.object({
-  companyName: z.string().min(2).max(100),
-  category: z.string().min(2).max(100),
-  direction: z.string().min(2).max(100),
-});
+import { useOnboarding } from "@/hooks/onboarding/useOnboarding";
 
 export default function OnboardingComponent() {
-  const [error, setError] = React.useState("");
-  const { user } = useUser();
-  const router = useRouter();
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      companyName: "",
-      category: "",
-      direction: "",
-    },
-  });
-
-  async function onSubmit(data: z.infer<typeof formSchema>) {
-    const res = await completeOnboarding(data);
-    if (res?.message) {
-      await user?.reload();
-      router.push("/dashboard");
-    }
-    if (res?.error) {
-      setError(res?.error);
-    }
-    console.log(data);
-  }
+  const { error, loading, form, onSubmit } = useOnboarding();
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen text-white p-8">
@@ -96,7 +63,8 @@ export default function OnboardingComponent() {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full text-lg p-6">Submit</Button>
+            <Button type="submit" disabled={loading} className="w-full text-lg p-6 rounded-md hover:bg-primary-hover cursor-pointer">{loading ? "Cargando..." : "Enviar"}</Button>
+            {error && <p className="text-red-500 mt-4">{error}</p>}
           </form>
         </FormProvider>
       </div>

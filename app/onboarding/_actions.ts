@@ -2,7 +2,7 @@
 
 import { auth, clerkClient } from '@clerk/nextjs/server'
 import { z } from 'zod'
-import { formSchema } from './page'
+import { formSchema } from '@/hooks/onboarding/useOnboarding'
 
 export const completeOnboarding = async (formData: z.infer<typeof formSchema>) => {
   const { isAuthenticated, userId } = await auth()
