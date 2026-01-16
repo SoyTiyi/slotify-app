@@ -20,6 +20,10 @@ export default clerkMiddleware(async (auth, req: NextRequest) => {
     return NextResponse.redirect(onboardingUrl);
   }
 
+  if (req.nextUrl.pathname === '/' && sessionClaims?.metadata?.onboardingComplete) {
+      return NextResponse.redirect(new URL('/private/dashboard', req.url))
+    }
+
   if (isAuthenticated && !isPublicRoute(req)) return NextResponse.next();
 });
 
