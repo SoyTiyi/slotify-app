@@ -19,7 +19,7 @@ export default function OnboardingComponent() {
   const { error, loading, form, onSubmit } = useOnboarding();
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen text-white p-8">
+    <div className="flex flex-col min-h-screen justify-center items-center text-white p-8">
       <OnboardingHeader />
       <OnboardingForm
         form={form}

@@ -1,6 +1,6 @@
 const OnboardingHeader = () => {
   return (
-    <div>
+    <>
       <h1 className="text-5xl font-semibold mb-8">
         Bienvenido a <b className="text-6xl font-bold text-primary">Slotify</b>
       </h1>
@@ -8,7 +8,7 @@ const OnboardingHeader = () => {
         Para comenzar, por favor completa la siguiente información sobre tu
         aplicación.
       </p>
-    </div>
+    </>
   );
 };
 
