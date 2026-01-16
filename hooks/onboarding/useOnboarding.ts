@@ -9,7 +9,7 @@ import { completeOnboarding } from "@/app/onboarding/_actions";
 export const formSchema = z.object({
   companyName: z.string().min(2).max(100),
   category: z.string().min(2).max(100),
-  direction: z.string().min(2).max(100),
+  address: z.string().min(2).max(100),
 });
 
 export function useOnboarding() {
@@ -22,7 +22,7 @@ export function useOnboarding() {
         defaultValues: {
           companyName: "",
           category: "",
-          direction: "",
+          address: "",
         },
       });
 

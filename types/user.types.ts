@@ -4,11 +4,11 @@ export type MeResponse = {
   onboardingComplete: boolean;
   companyName?: string | null;
   category?: string | null;
-  direction?: string | null;
+  address?: string | null;
 };
 
 export type OnboardingPayload = {
   companyName: string;
   category: string;
-  direction: string;
+  address: string;
 };

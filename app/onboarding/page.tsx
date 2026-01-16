@@ -52,7 +52,7 @@ export default function OnboardingComponent() {
               )}
             />
             <FormField
-              name="direction"
+              name="address"
               control={form.control}
               render={({ field }) => (
                 <FormItem>
