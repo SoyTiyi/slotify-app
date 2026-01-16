@@ -35,7 +35,7 @@ export function useOnboarding() {
 
       if (res?.message) {
         await user?.reload();
-        router.push("/dashboard");
+        router.push("/private/dashboard");
       }
 
       if (res?.error) {

@@ -13,12 +13,16 @@ export async function fetcher<TResponse = unknown>(
 ): Promise<TResponse> {
   const url = endpoint.startsWith('http') ? endpoint : `${API_URL}${endpoint}`;
 
+  console.log('fetch', url, options);
+
   const res = await fetch(url, {
     ...options,
     headers: {
       ...options.headers,
     },
   });
+
+  console.log('response', res);
 
   if (res.status === 204) {
     return null as TResponse;
