@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C \"c:\\\\Users\\\\USER\\\\OneDrive\\\\Documentos\\\\projects\\\\slotify-app\" log --oneline -10)"
+    ]
+  }
+}
