@@ -30,3 +30,5 @@ const SidebarNavItem = ({ href, label, icon: Icon, onClick }: Props) => {
     </Link>
   );
 };
+
+export default SidebarNavItem;
