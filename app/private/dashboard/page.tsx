@@ -6,9 +6,8 @@ const Dashboard = async () => {
   const me = await users.me();
 
   return (
-    <div>
-      <h1 className="text-4xl text-primary font-bold text-center mt-20">Dashboard</h1>
-      <pre className="text-white">{JSON.stringify(me, null, 2)}</pre>
+    <div className="p-6">
+      <h1 className="text-3xl font-bold text-text-primary">Dashboard</h1>
     </div>
   );
 };
